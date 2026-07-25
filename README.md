@@ -39,16 +39,6 @@ An ESP32-S3 based Wi-Fi voice assistant using Xiaozhi AI.
 | MAX98357A | SPK-    | Speaker -    |
 
 
-## Important notes
-
-- Connect all GND pins together.
-- The INMP441 must use 3.3 V, not 5 V.
-- Do not connect MAX98357A SPK+ or SPK- to GND.
-- Keep I2S wires short to reduce audio noise.
-- Use a stable power supply. A 5 V supply is recommended for louder speaker
-  output when the MAX98357A module supports it.
-- Verify your prebuilt firmware uses these exact GPIO pins before flashing.
-
 ## Flashing prebuilt firmware
 
 If using Xiaozhi prebuilt ESP32-S3 firmware, flash these files with Espressif
@@ -64,6 +54,28 @@ Flash Download Tool:
 
 Use firmware that matches the flash size, PSRAM, display, buttons, and GPIO
 connections of the actual board.
+
+
+###  🌐 Connecting to Xiaozhi AI
+
+Once flashed successfully:
+
+1. **Power On:** ESP32-S3.
+2. **Wi-Fi Provisioning:**
+   - The device will create an Access Point (AP) or request Wi-Fi configuration via Serial terminal (depending on your build).
+   - Connect to the device's Wi-Fi hotspot and enter your home **Wi-Fi SSID & Password**.
+3. **Xiaozhi AI Server Bind:**
+   - Open your browser or the Xiaozhi App/Console.
+   - Enter the Device ID / MAC address shown on your Serial Monitor (at 115200 baud).
+   - Once connected, speak to the INMP441 microphone to start chatting with Xiaozhi AI!
+
+---
+
+### ⚠️ Important Notes & Troubleshooting
+
+- **Power Supply:** Ensure a stable 5 V power source (at least 1A–2A) to avoid brownout resets when the speaker plays at high volume.
+- **Audio Noise:** Keep I2S wiring as short as possible to prevent signal interference.
+- **PSRAM & Flash:** Verify that your ESP32-S3 firmware build matches your board's PSRAM (N8R8 / N16R8, etc.) configuration.
 
 ## License
 
